@@ -182,7 +182,7 @@ export default function Dashboard() {
             View All <ArrowRight size={14} />
           </button>
         </div>
-        <div className="card-body-custom" style={{ padding: '8px 24px' }}>
+        <div className="card-body-custom recent-donations-body">
           {recentDonations.length === 0 ? (
             <div className="empty-state">
               <div className="empty-state-icon"><Inbox size={32} /></div>
@@ -191,23 +191,30 @@ export default function Dashboard() {
             </div>
           ) : (
             recentDonations.map((d) => (
-              <div key={d._id} className="recent-row">
-                <div className="donor-avatar">{getInitials(d.donorName)}</div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontWeight: 700, fontSize: 13.5 }}>{d.donorName}</div>
-                  <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 500 }}>{d.email}</div>
+              <div key={d._id} className="recent-item">
+                <div className="recent-left">
+                  <div className="donor-avatar">{getInitials(d.donorName)}</div>
+                  <div className="recent-donor-info">
+                    <div className="recent-donor-name">{d.donorName}</div>
+                    <div className="recent-donor-meta">
+                      <span className="recent-donor-email">{d.email}</span>
+                      <span className={`badge-custom recent-type-badge ${typeBadge(d.donationType)}`}>
+                        <span className="badge-dot" />
+                        {d.donationType}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <span className={`badge-custom ${typeBadge(d.donationType)}`}>
-                  <span className="badge-dot" />
-                  {d.donationType}
-                </span>
-                <span style={{ fontWeight: 800, color: 'var(--success)', minWidth: 90, textAlign: 'right', fontSize: 13.5 }}>
-                  {formatAmount(d.donationAmount)}
-                </span>
-                <span className={`badge-custom ${statusBadge(d.currentStatus)}`}>
-                  <span className="badge-dot" />
-                  {d.currentStatus}
-                </span>
+
+                <div className="recent-right">
+                  <span className="recent-amount">
+                    {formatAmount(d.donationAmount)}
+                  </span>
+                  <span className={`badge-custom recent-status-badge ${statusBadge(d.currentStatus)}`}>
+                    <span className="badge-dot" />
+                    {d.currentStatus}
+                  </span>
+                </div>
               </div>
             ))
           )}
