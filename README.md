@@ -327,3 +327,9 @@ Sign-up flow:
 - Interactive charts using Recharts or Chart.js to replace the static bar charts
 - Dark mode toggle stored in localStorage
 - Unit and integration tests using Jest, Supertest, Vitest, and Testing Library
+
+### Live Deployment Link
+
+- Deployed the Client side(front-end) in Vercel.
+- Deployed the Server side(Back-end) in Render.
+- Live Link: ( https://donationmanagementsystem-one.vercel.app )
