@@ -391,7 +391,7 @@ export default function DonationForm() {
               </div>
 
               {/* Submit Buttons */}
-              <div className="col-12 d-flex gap-2 justify-content-end mt-2">
+              <div className="col-12 form-actions d-flex gap-2 justify-content-end mt-2">
                 <button
                   type="button"
                   className="btn-outline-custom"

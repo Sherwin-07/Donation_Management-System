@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { Calendar } from 'lucide-react';
+import { Calendar, Menu } from 'lucide-react';
 
 const pageMeta = {
   '/':              { title: 'Dashboard',        subtitle: 'Overview of all donation activity'        },
@@ -8,7 +8,7 @@ const pageMeta = {
   '/edit-donation': { title: 'Edit Donation',     subtitle: 'Update an existing donation record'      },
 };
 
-export default function Topbar() {
+export default function Topbar({ onToggleSidebar }) {
   const location = useLocation();
 
   const matchKey =
@@ -24,17 +24,27 @@ export default function Topbar() {
 
   return (
     <header className="topbar">
-      {/* Left — title only, no icon */}
-      <div>
-        <div className="topbar-title">{info.title}</div>
-        <div className="topbar-subtitle">{info.subtitle}</div>
+      {/* Left — Hamburger button on mobile + title */}
+      <div className="topbar-left">
+        <button
+          type="button"
+          className="topbar-toggle-btn"
+          onClick={onToggleSidebar}
+          aria-label="Toggle navigation menu"
+        >
+          <Menu size={20} />
+        </button>
+        <div className="topbar-headings">
+          <div className="topbar-title">{info.title}</div>
+          <div className="topbar-subtitle">{info.subtitle}</div>
+        </div>
       </div>
 
       {/* Right — date pill + avatar */}
       <div className="topbar-right">
         <div className="topbar-pill">
           <Calendar size={13} strokeWidth={2.5} />
-          {now}
+          <span>{now}</span>
         </div>
 
         <div className="topbar-divider" />
@@ -46,3 +56,4 @@ export default function Topbar() {
     </header>
   );
 }
+

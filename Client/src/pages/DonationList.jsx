@@ -32,9 +32,9 @@ function ViewModal({ donation, onClose }) {
   if (!donation) return null;
 
   const row = (label, value) => (
-    <div style={{ display: 'flex', borderBottom: '1px solid var(--border-color)', padding: '10px 0', gap: 12 }}>
-      <span style={{ width: 160, color: 'var(--text-muted)', fontSize: 13, flexShrink: 0 }}>{label}</span>
-      <span style={{ fontWeight: 500, fontSize: 13 }}>{value || '—'}</span>
+    <div className="modal-detail-row">
+      <span className="modal-detail-label">{label}</span>
+      <span className="modal-detail-value">{value || '—'}</span>
     </div>
   );
 
@@ -44,7 +44,7 @@ function ViewModal({ donation, onClose }) {
         <div className="modal-header-custom">
           <h4>
             <div className="donor-avatar">{getInitials(donation.donorName)}</div>
-            {donation.donorName}
+            <span>{donation.donorName}</span>
           </h4>
           <button className="btn-close-custom" onClick={onClose}>
             <X size={18} />
@@ -293,8 +293,7 @@ export default function DonationList() {
         {/* Type */}
         <select
           id="filter-type"
-          className="form-control-custom"
-          style={{ width: 155 }}
+          className="form-control-custom filter-select"
           value={donationType}
           onChange={(e) => setDonationType(e.target.value)}
         >
@@ -309,8 +308,7 @@ export default function DonationList() {
         {/* Payment */}
         <select
           id="filter-payment"
-          className="form-control-custom"
-          style={{ width: 155 }}
+          className="form-control-custom filter-select"
           value={paymentMethod}
           onChange={(e) => setPaymentMethod(e.target.value)}
         >
@@ -325,8 +323,7 @@ export default function DonationList() {
         {/* Status */}
         <select
           id="filter-status"
-          className="form-control-custom"
-          style={{ width: 140 }}
+          className="form-control-custom filter-select"
           value={currentStatus}
           onChange={(e) => setCurrentStatus(e.target.value)}
         >
@@ -338,44 +335,45 @@ export default function DonationList() {
         </select>
 
         {/* Date Range */}
-        <div className="date-input-wrapper">
+        <div className="date-input-wrapper filter-date">
           <CalendarDays size={14} className="date-icon" />
           <input
             id="filter-from-date"
             type="date"
             className="form-control-custom"
-            style={{ width: 158 }}
             value={fromDate}
             onChange={(e) => setFromDate(e.target.value)}
             title="From date"
           />
         </div>
-        <div className="date-input-wrapper">
+        <div className="date-input-wrapper filter-date">
           <CalendarDays size={14} className="date-icon" />
           <input
             id="filter-to-date"
             type="date"
             className="form-control-custom"
-            style={{ width: 158 }}
             value={toDate}
             onChange={(e) => setToDate(e.target.value)}
             title="To date"
           />
         </div>
 
-        {/* Reset */}
-        <button className="btn-outline-custom" onClick={resetFilters} title="Reset filters">
-          <RotateCcw size={14} /> Reset
-        </button>
+        {/* Filter Actions */}
+        <div className="filter-actions">
+          {/* Reset */}
+          <button className="btn-outline-custom" onClick={resetFilters} title="Reset filters">
+            <RotateCcw size={14} /> Reset
+          </button>
 
-        {/* Add New */}
-        <button
-          id="add-donation-btn"
-          className="btn-primary-custom"
-          onClick={() => navigate('/add-donation')}
-        >
-          <PlusCircle size={15} /> Add Donation
-        </button>
+          {/* Add New */}
+          <button
+            id="add-donation-btn"
+            className="btn-primary-custom"
+            onClick={() => navigate('/add-donation')}
+          >
+            <PlusCircle size={15} /> Add Donation
+          </button>
+        </div>
       </div>
 
       {/* ── Table Card ── */}
