@@ -328,7 +328,7 @@ Sign-up flow:
 - Dark mode toggle stored in localStorage
 - Unit and integration tests using Jest, Supertest, Vitest, and Testing Library
 
-### Live Deployment Link
+## Live Deployment Link
 
 - Deployed the Client side(front-end) in Vercel.
 - Deployed the Server side(Back-end) in Render.
