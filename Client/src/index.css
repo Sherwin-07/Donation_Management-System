@@ -640,9 +640,15 @@ body {
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   align-items: center;   /* ← vertically centres ALL children */
   box-shadow: var(--shadow-xs);
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 /* Uniform height for every control inside the filter bar */
@@ -1339,6 +1345,8 @@ body {
     width: 100%;
     justify-content: flex-end;
     margin-top: 4px;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   .filter-bar .filter-actions .btn-primary-custom,

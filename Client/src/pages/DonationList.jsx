@@ -360,8 +360,23 @@ export default function DonationList() {
 
         {/* Filter Actions */}
         <div className="filter-actions">
+          {/* Search */}
+          <button
+            id="search-cta-btn"
+            className="btn-primary-custom"
+            onClick={() => { setSearch(searchInput); setPage(1); }}
+            title="Search records"
+          >
+            <Search size={14} /> Search
+          </button>
+
           {/* Reset */}
-          <button className="btn-outline-custom" onClick={resetFilters} title="Reset filters">
+          <button
+            id="reset-cta-btn"
+            className="btn-outline-custom"
+            onClick={resetFilters}
+            title="Reset filters"
+          >
             <RotateCcw size={14} /> Reset
           </button>
 
